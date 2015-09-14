@@ -1,0 +1,101 @@
+package com.sample
+ 
+import com.sample.DroolsTest.Message;
+ 
+rule "Dusty PC"
+    when
+        h: Hardware(fixOrUpgrade  == "fix", problemToFix == "shutdown/restart", noisy == true, cleaned == false)
+    then
+    	h.setSolution("Clean your PC");    	   
+		update( h);
+end
+
+rule "Faulty cooler"
+    when
+        h: Hardware(fixOrUpgrade  == "fix", problemToFix == "shutdown/restart", noisy == true, cleaned == true)
+    then
+        h.setSolution("Replace cooler");
+        update(h);
+end
+
+rule "Faulty PSU"
+    when
+        h: Hardware(fixOrUpgrade  == "fix", problemToFix == "shutdown/restart", noisy == false, demandingOperations == true)
+    then
+        h.setSolution("Replace PSU");
+        update(h);
+end
+
+rule "Faulty dedicated sound card"
+    when
+        h: Hardware(fixOrUpgrade  == "fix", problemToFix == "audio", typeOfSoundProblem == "no sound", dedicatedSoundCard == true)
+    then
+        h.setSolution("Replace sound card");
+        update(h);
+end
+
+rule "Faulty onboard sound card"
+    when
+        h: Hardware(fixOrUpgrade  == "fix", problemToFix == "audio", typeOfSoundProblem == "no sound", dedicatedSoundCard == false)
+    then
+        h.setSolution("Replace motherboard");
+        update(h);
+end
+
+rule "Faulty speakers cable"
+    when
+        h: Hardware(fixOrUpgrade  == "fix", problemToFix == "audio", typeOfSoundProblem == "clipping sound")
+    then
+        h.setSolution("Check your speakers cable");
+        update(h);
+end
+
+rule "Faulty VGA/DVI/DP monitor cable"
+    when
+        h: Hardware(fixOrUpgrade  == "fix", problemToFix == "video", checkedVideoCable == false)
+    then
+        h.setSolution("Check monitor (DVI/VGA/DP) cable");
+        update(h);
+end
+
+rule "Faulty graphic card"
+    when
+        h: Hardware(fixOrUpgrade  == "fix", problemToFix == "video", checkedVideoCable == true)
+    then
+        h.setSolution("Replace graphic card");
+        update(h);
+end
+
+rule "Faulty RAM"
+    when
+        h: Hardware(fixOrUpgrade  == "fix", problemToFix == "stuttering", triedDifferentRam  == false)
+    then
+        h.setSolution("Try different RAM sticks or change the slots of current ones");
+        update(h);
+end
+
+rule "Faulty hard disk drive"
+    when
+        h: Hardware(fixOrUpgrade  == "fix", problemToFix == "stuttering", triedDifferentRam  == true)
+    then
+        h.setSolution("Check or replace your hard disk drive");
+        update(h);
+end
+
+rule "Dead PSU"
+    when
+        h: Hardware(fixOrUpgrade  == "fix", problemToFix == "wont start", startupSound == "quiet" )
+    then
+        h.setSolution("Replace PSU");
+        update(h);
+end
+
+rule "Beeping problem"
+    when
+        h: Hardware(fixOrUpgrade  == "fix", problemToFix == "wont start", startupSound == "beeps" )
+    then
+        h.setSolution("Find beep codes for your motherboard and examine the problem");
+        update(h);
+end
+
+
