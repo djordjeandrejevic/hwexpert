@@ -9,49 +9,27 @@ import org.kie.api.runtime.KieSession;
  */
 public class DroolsTest {
 
-    public static final void main(String[] args) {
-        try {
-            // load up the knowledge base
-	        KieServices ks = KieServices.Factory.get();
-    	    KieContainer kContainer = ks.getKieClasspathContainer();
-        	KieSession kSession = kContainer.newKieSession("ksession-rules");
+	public static final void main(String[] args) {
+		try {
+			// load up the knowledge base
+			KieServices ks = KieServices.Factory.get();
+			KieContainer kContainer = ks.getKieClasspathContainer();
+			KieSession kSession = kContainer.newKieSession("ksession-rules");
+			
+			Hardware h = new Hardware();
+			h.setFixOrUpgrade("fix");
+			h.setCheckedVideoCable(true);
+			h.setProblemToFix("video");
+			
+            kSession.insert(h);
+            
+            kSession.fireAllRules();			
+			System.out.println(h.getSolution());
 
-            // go !
-            Message message = new Message();
-            message.setMessage("Hello World");
-            message.setStatus(Message.HELLO);
-            kSession.insert(message);
-            kSession.fireAllRules();
-        } catch (Throwable t) {
-            t.printStackTrace();
-        }
-    }
+		} catch (Throwable t) {
+			t.printStackTrace();
+		}
 
-    public static class Message {
-
-        public static final int HELLO = 0;
-        public static final int GOODBYE = 1;
-
-        private String message;
-
-        private int status;
-
-        public String getMessage() {
-            return this.message;
-        }
-
-        public void setMessage(String message) {
-            this.message = message;
-        }
-
-        public int getStatus() {
-            return this.status;
-        }
-
-        public void setStatus(int status) {
-            this.status = status;
-        }
-
-    }
+	}
 
 }

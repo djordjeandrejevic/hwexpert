@@ -57,7 +57,7 @@ public class Hardware {
 
 	// Solution
 
-	private String solution;
+	private String solution = "";
 
 	public String getFixOrUpgrade() {
 		return fixOrUpgrade;

@@ -1,8 +1,7 @@
 package com.sample
  
-import com.sample.DroolsTest.Message;
- 
 rule "Dusty PC"
+lock-on-active true
     when
         h: Hardware(fixOrUpgrade  == "fix", problemToFix == "shutdown/restart", noisy == true, cleaned == false)
     then
@@ -11,6 +10,7 @@ rule "Dusty PC"
 end
 
 rule "Faulty cooler"
+lock-on-active true
     when
         h: Hardware(fixOrUpgrade  == "fix", problemToFix == "shutdown/restart", noisy == true, cleaned == true)
     then
@@ -19,6 +19,7 @@ rule "Faulty cooler"
 end
 
 rule "Faulty PSU"
+lock-on-active true
     when
         h: Hardware(fixOrUpgrade  == "fix", problemToFix == "shutdown/restart", noisy == false, demandingOperations == true)
     then
@@ -27,6 +28,7 @@ rule "Faulty PSU"
 end
 
 rule "Faulty dedicated sound card"
+lock-on-active true
     when
         h: Hardware(fixOrUpgrade  == "fix", problemToFix == "audio", typeOfSoundProblem == "no sound", dedicatedSoundCard == true)
     then
@@ -35,6 +37,7 @@ rule "Faulty dedicated sound card"
 end
 
 rule "Faulty onboard sound card"
+lock-on-active true
     when
         h: Hardware(fixOrUpgrade  == "fix", problemToFix == "audio", typeOfSoundProblem == "no sound", dedicatedSoundCard == false)
     then
@@ -43,6 +46,7 @@ rule "Faulty onboard sound card"
 end
 
 rule "Faulty speakers cable"
+lock-on-active true
     when
         h: Hardware(fixOrUpgrade  == "fix", problemToFix == "audio", typeOfSoundProblem == "clipping sound")
     then
@@ -51,6 +55,7 @@ rule "Faulty speakers cable"
 end
 
 rule "Faulty VGA/DVI/DP monitor cable"
+lock-on-active true
     when
         h: Hardware(fixOrUpgrade  == "fix", problemToFix == "video", checkedVideoCable == false)
     then
@@ -59,6 +64,7 @@ rule "Faulty VGA/DVI/DP monitor cable"
 end
 
 rule "Faulty graphic card"
+lock-on-active true
     when
         h: Hardware(fixOrUpgrade  == "fix", problemToFix == "video", checkedVideoCable == true)
     then
@@ -67,6 +73,7 @@ rule "Faulty graphic card"
 end
 
 rule "Faulty RAM"
+lock-on-active true
     when
         h: Hardware(fixOrUpgrade  == "fix", problemToFix == "stuttering", triedDifferentRam  == false)
     then
@@ -75,6 +82,7 @@ rule "Faulty RAM"
 end
 
 rule "Faulty hard disk drive"
+lock-on-active true
     when
         h: Hardware(fixOrUpgrade  == "fix", problemToFix == "stuttering", triedDifferentRam  == true)
     then
@@ -83,6 +91,7 @@ rule "Faulty hard disk drive"
 end
 
 rule "Dead PSU"
+lock-on-active true
     when
         h: Hardware(fixOrUpgrade  == "fix", problemToFix == "wont start", startupSound == "quiet" )
     then
@@ -91,11 +100,118 @@ rule "Dead PSU"
 end
 
 rule "Beeping problem"
+lock-on-active true
     when
-        h: Hardware(fixOrUpgrade  == "fix", problemToFix == "wont start", startupSound == "beeps" )
+        h: Hardware(fixOrUpgrade  == "fix", problemToFix == "wont start", startupSound == "beeps")
     then
         h.setSolution("Find beep codes for your motherboard and examine the problem");
         update(h);
 end
 
+rule "Slow loading"
+lock-on-active true
+    when
+        h: Hardware(fixOrUpgrade  == "upgrade", primaryUsage == "office/internet", slowLoading == true)
+    then
+        h.setSolution("Buy an SSD");
+        update(h);
+end
 
+rule "RAM gaming upgrade"
+lock-on-active true
+    when
+        h: Hardware(fixOrUpgrade  == "upgrade", primaryUsage == "gaming", ramSize < 6)
+    then
+        h.setSolution("Buy more RAM");
+        update(h);
+end
+
+rule "CPU gaming upgrade"
+lock-on-active true
+    when
+        h: Hardware(fixOrUpgrade  == "upgrade", primaryUsage == "gaming", cpuCores  < 4)
+    then
+        h.setSolution("Buy at least quad-core CPU");
+        update(h);
+end
+
+rule "GPU gaming upgrade"
+lock-on-active true
+    when
+        h: Hardware(fixOrUpgrade  == "upgrade", primaryUsage == "gaming", vramSize   < 2)
+    then
+        h.setSolution("Buy at least 2GB VRAM GPU");
+        update(h);
+end
+
+rule "FPS gaming"
+lock-on-active true
+    when
+        h: Hardware(fixOrUpgrade  == "upgrade", primaryUsage == "gaming", fpsGames == true)
+    then
+        h.setSolution("Consider buying a high DPI mouse and 120Hz/1ms monitor");
+        update(h);
+end
+
+rule "Slow startup"
+lock-on-active true
+    when
+        h: Hardware(fixOrUpgrade  == "upgrade", primaryUsage == "office/internet", slowStartup == true)
+    then
+        h.setSolution("Buy an SSD");
+        update(h);
+end
+
+rule "Multitasking problems"
+lock-on-active true
+    when
+        h: Hardware(fixOrUpgrade  == "upgrade", primaryUsage == "office/internet", multitask == true)
+    then
+        h.setSolution("Buy more RAM");
+        update(h);
+end
+
+rule "CPU office/internet upgrade"
+lock-on-active true
+    when
+        h: Hardware(fixOrUpgrade  == "upgrade", primaryUsage == "office/internet", cpuCores <= 4)
+    then
+        h.setSolution("Buy at least quad-core CPU");
+        update(h);
+end
+
+rule "Monitor upgrade"
+lock-on-active true
+    when
+        h: Hardware(fixOrUpgrade  == "upgrade", primaryUsage == "multimedia", htpcOrRegular == "regular", monitorSize < 24)
+    then
+        h.setSolution("Consider buying a 24\" or bigger monitor");
+        update(h);
+end
+
+rule "Speakers upgrade"
+lock-on-active true
+    when
+        h: Hardware(fixOrUpgrade  == "upgrade", primaryUsage == "multimedia", speakers in (2.0,2.1))
+    then
+        h.setSolution("Consider buying a 5.1 system");
+        update(h);
+end
+
+rule "Sound card upgrade"
+lock-on-active true
+    when
+        h: Hardware(fixOrUpgrade  == "upgrade", primaryUsage == "multimedia", dedicatedSoundCard == false)
+    then
+        h.setSolution("Consider buying a dedicated sound card");
+        update(h);
+end
+
+rule "Hard disk drive upgrade"
+lock-on-active true
+    when
+        h: Hardware(fixOrUpgrade  == "upgrade", primaryUsage == "multimedia", enoughStorage == false)
+    then
+        h.setSolution("Buy a bigger HDD");
+        update(h);
+end
