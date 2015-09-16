@@ -2,6 +2,15 @@ package com.sample;
 
 public class Hardware {
 
+	private static Hardware instance;
+
+	public static Hardware getInstance() {
+		if (instance == null) {
+			instance = new Hardware();
+		}
+		return instance;
+	}
+
 	// root node
 
 	private String fixOrUpgrade;
