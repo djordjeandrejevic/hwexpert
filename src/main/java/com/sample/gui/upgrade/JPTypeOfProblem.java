@@ -1,4 +1,4 @@
-package com.sample.gui.troubleshoot;
+package com.sample.gui.upgrade;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -31,45 +31,35 @@ public class JPTypeOfProblem extends JPanel {
 		lblWhatTypeOf.setBounds(104, 71, 273, 14);
 		panel.add(lblWhatTypeOf);
 		
-		JButton btnShutdownrestartProblem = new JButton("Shutdown/restart problem");
+		JButton btnShutdownrestartProblem = new JButton("Gaming");
 		btnShutdownrestartProblem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Hardware.getInstance().setProblemToFix("shutdown/restart");;
+				Hardware.getInstance().setPrimaryUsage("gaming");
 				GUIUtil.changePanel(panel, new JPNoisy());
 			}
 		});
 		btnShutdownrestartProblem.setBounds(120, 104, 200, 23);
 		panel.add(btnShutdownrestartProblem);
 		
-		JButton btnStutteringProblem = new JButton("Stuttering problem");
+		JButton btnStutteringProblem = new JButton("office/internet");
 		btnStutteringProblem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Hardware.getInstance().setProblemToFix("stuttering");;
+				Hardware.getInstance().setPrimaryUsage("office/internet");
 				GUIUtil.changePanel(panel, new JPDifferentRAMSticks());
 			}
 		});
 		btnStutteringProblem.setBounds(120, 138, 200, 23);
 		panel.add(btnStutteringProblem);
 		
-		JButton btnAudioProblem = new JButton("Audio problem");
+		JButton btnAudioProblem = new JButton("Multimedia");
 		btnAudioProblem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Hardware.getInstance().setProblemToFix("audio");
+				Hardware.getInstance().setPrimaryUsage("multimedia");
 				GUIUtil.changePanel(panel, new JPNoSoundClipping());
 			}
 		});
 		btnAudioProblem.setBounds(120, 172, 200, 23);
 		panel.add(btnAudioProblem);
-		
-		JButton btnVideoProblem = new JButton("Video problem");
-		btnVideoProblem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				Hardware.getInstance().setProblemToFix("video");
-				GUIUtil.changePanel(panel, new JPCheckedCable());
-			}
-		});
-		btnVideoProblem.setBounds(120, 206, 200, 23);
-		panel.add(btnVideoProblem);
 
 	}
 }

@@ -8,12 +8,17 @@ public class GUIUtil {
 
 	public static void changePanel(JPanel panelToRemove, JPanel panelToShow) {
 		
-		panelToRemove.removeAll();
-		panelToRemove.revalidate();
-		panelToRemove.repaint();		
+//		panelToRemove.hide();
+//		panelToRemove.removeAll();
+//		panelToRemove.revalidate();
+//		panelToRemove.repaint();		
 		
 		JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(panelToRemove);		
-		topFrame.add(panelToShow);
+//		topFrame.getContentPane().remove(panelToRemove);
+		topFrame.getContentPane().removeAll();
+		topFrame.getContentPane().revalidate();
+		topFrame.getContentPane().repaint();
+		topFrame.getContentPane().add(panelToShow);		
 		
 
 	}

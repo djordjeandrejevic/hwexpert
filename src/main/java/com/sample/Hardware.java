@@ -260,4 +260,25 @@ public class Hardware {
 		this.triedDifferentRam = triedDifferentRam;
 	}
 
+	@Override
+	public String toString() {
+		return "Hardware [fixOrUpgrade=" + fixOrUpgrade + ", problemToFix="
+				+ problemToFix + ", noisy=" + noisy + ", cleaned=" + cleaned
+				+ ", demandingOperations=" + demandingOperations + ", stucks="
+				+ stucks + ", startupSound=" + startupSound
+				+ ", typeOfSoundProblem=" + typeOfSoundProblem
+				+ ", checkedVideoCable=" + checkedVideoCable
+				+ ", triedDifferentRam=" + triedDifferentRam
+				+ ", primaryUsage=" + primaryUsage + ", slowLoading="
+				+ slowLoading + ", fpsGames=" + fpsGames + ", ramSize="
+				+ ramSize + ", cpuCores=" + cpuCores + ", vramSize=" + vramSize
+				+ ", slowStartup=" + slowStartup + ", multitask=" + multitask
+				+ ", htpcOrRegular=" + htpcOrRegular + ", monitorSize="
+				+ monitorSize + ", enoughStorage=" + enoughStorage
+				+ ", speakers=" + speakers + ", dedicatedSoundCard="
+				+ dedicatedSoundCard + ", solution=" + solution + "]";
+	}
+	
+	
+
 }

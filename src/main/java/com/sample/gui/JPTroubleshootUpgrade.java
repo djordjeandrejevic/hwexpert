@@ -33,6 +33,11 @@ public class JPTroubleshootUpgrade extends JPanel {
 		});
 		
 		JButton jbtnUpgrade = new JButton("Upgrade");
+		jbtnUpgrade.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
