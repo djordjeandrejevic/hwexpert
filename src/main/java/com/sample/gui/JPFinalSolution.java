@@ -10,12 +10,12 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class JPFinal extends JPanel {
+public class JPFinalSolution extends JPanel {
 
 	/**
 	 * Create the panel.
 	 */
-	public JPFinal(String solution) {
+	public JPFinalSolution(String solution) {
 		setLayout(null);
 
 		final JPanel panel = new JPanel();

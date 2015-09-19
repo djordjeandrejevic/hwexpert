@@ -1,5 +1,8 @@
 package com.sample;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Hardware {
 
 	private static Hardware instance;
@@ -67,7 +70,11 @@ public class Hardware {
 	// Solution
 
 	private String solution = "";
+	
+	// Recommendations
 
+	private List<String> recommendations = new ArrayList<String>();
+	
 	public String getFixOrUpgrade() {
 		return fixOrUpgrade;
 	}
@@ -258,6 +265,15 @@ public class Hardware {
 
 	public void setTriedDifferentRam(boolean triedDifferentRam) {
 		this.triedDifferentRam = triedDifferentRam;
+	}	
+	
+
+	public List<String> getRecommendations() {
+		return recommendations;
+	}
+
+	public void setRecommendations(List<String> recommendations) {
+		this.recommendations = recommendations;
 	}
 
 	@Override

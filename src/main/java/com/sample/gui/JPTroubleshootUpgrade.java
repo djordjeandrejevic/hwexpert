@@ -11,6 +11,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import com.sample.Hardware;
 import com.sample.gui.troubleshoot.JPTypeOfProblem;
+import com.sample.gui.upgrade.JPUpgrade;
 
 public class JPTroubleshootUpgrade extends JPanel {
 
@@ -35,7 +36,8 @@ public class JPTroubleshootUpgrade extends JPanel {
 		JButton jbtnUpgrade = new JButton("Upgrade");
 		jbtnUpgrade.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				Hardware.getInstance().setFixOrUpgrade("upgrade");
+				GUIUtil.changePanel(panel, new JPUpgrade());			
 			}
 		});
 		GroupLayout gl_panel = new GroupLayout(panel);

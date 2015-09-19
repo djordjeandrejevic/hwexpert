@@ -1,23 +1,25 @@
-package com.sample.gui.troubleshoot.shutdownrestart;
+package com.sample.gui.upgrade.gaming;
 
-import javax.swing.JPanel;
-import javax.swing.JLabel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import com.sample.Hardware;
 import com.sample.Solution;
 import com.sample.gui.GUIUtil;
 import com.sample.gui.JPFinalSolution;
+import com.sample.gui.JPFinalRecommendations;
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
-public class JPShutdownDemandingOps extends JPanel {
+public class JPFpsGames extends JPanel {
 
 	/**
 	 * Create the panel.
 	 */
-	public JPShutdownDemandingOps() {
+	public JPFpsGames() {
 		setLayout(null);
 		
 		final JPanel panel = new JPanel();
@@ -25,16 +27,15 @@ public class JPShutdownDemandingOps extends JPanel {
 		add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Does your PC shutdown while you're doing demanding operations (i.e. gaming)?");
-		lblNewLabel.setBounds(20, 70, 410, 51);
+		JLabel lblNewLabel = new JLabel("Do you play FPS (first person shooter) games?");
+		lblNewLabel.setBounds(96, 103, 272, 14);
 		panel.add(lblNewLabel);
 		
 		JButton btnYes = new JButton("Yes");
 		btnYes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Hardware.getInstance().setDemandingOperations(true);
-				GUIUtil.changePanel(panel, new JPFinalSolution(Solution.createSolution()));
-				
+				Hardware.getInstance().setFpsGames(true);
+				GUIUtil.changePanel(panel, new JPFinalRecommendations((ArrayList<String>) Solution.createRecommendations()));			
 			}
 		});
 		btnYes.setBounds(96, 162, 89, 23);
@@ -43,8 +44,8 @@ public class JPShutdownDemandingOps extends JPanel {
 		JButton btnNo = new JButton("No");
 		btnNo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Hardware.getInstance().setDemandingOperations(false);
-				GUIUtil.changePanel(panel, new JPFinalSolution(Solution.createSolution()));
+				Hardware.getInstance().setFpsGames(false);
+				GUIUtil.changePanel(panel, new JPFinalRecommendations((ArrayList<String>) Solution.createRecommendations()));				
 			}
 		});
 		btnNo.setBounds(249, 162, 89, 23);

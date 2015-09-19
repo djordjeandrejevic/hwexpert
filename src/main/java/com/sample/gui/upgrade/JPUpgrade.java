@@ -13,13 +13,15 @@ import com.sample.gui.troubleshoot.audio.JPNoSoundClipping;
 import com.sample.gui.troubleshoot.shutdownrestart.JPNoisy;
 import com.sample.gui.troubleshoot.stuttering.JPDifferentRAMSticks;
 import com.sample.gui.troubleshoot.video.JPCheckedCable;
+import com.sample.gui.upgrade.gaming.JPSlowGameLoading;
+import com.sample.gui.upgrade.officeinternet.JPSlowStartup;
 
-public class JPTypeOfProblem extends JPanel {
+public class JPUpgrade extends JPanel {
 
 	/**
 	 * Create the panel.
 	 */
-	public JPTypeOfProblem() {
+	public JPUpgrade() {
 		setLayout(null);
 		
 		final JPanel panel = new JPanel();
@@ -27,39 +29,39 @@ public class JPTypeOfProblem extends JPanel {
 		add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblWhatTypeOf = new JLabel("What type of hardware issue are you facing?");
+		JLabel lblWhatTypeOf = new JLabel("What is the primary purpose of your PC?");
 		lblWhatTypeOf.setBounds(104, 71, 273, 14);
 		panel.add(lblWhatTypeOf);
 		
-		JButton btnShutdownrestartProblem = new JButton("Gaming");
-		btnShutdownrestartProblem.addActionListener(new ActionListener() {
+		JButton btnGaming = new JButton("Gaming");
+		btnGaming.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Hardware.getInstance().setPrimaryUsage("gaming");
-				GUIUtil.changePanel(panel, new JPNoisy());
+				GUIUtil.changePanel(panel, new JPSlowGameLoading());
 			}
 		});
-		btnShutdownrestartProblem.setBounds(120, 104, 200, 23);
-		panel.add(btnShutdownrestartProblem);
+		btnGaming.setBounds(120, 104, 200, 23);
+		panel.add(btnGaming);
 		
-		JButton btnStutteringProblem = new JButton("office/internet");
-		btnStutteringProblem.addActionListener(new ActionListener() {
+		JButton btnOfficeInternet = new JButton("Office / Internet");
+		btnOfficeInternet.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Hardware.getInstance().setPrimaryUsage("office/internet");
-				GUIUtil.changePanel(panel, new JPDifferentRAMSticks());
+				GUIUtil.changePanel(panel, new JPSlowStartup());
 			}
 		});
-		btnStutteringProblem.setBounds(120, 138, 200, 23);
-		panel.add(btnStutteringProblem);
+		btnOfficeInternet.setBounds(120, 138, 200, 23);
+		panel.add(btnOfficeInternet);
 		
-		JButton btnAudioProblem = new JButton("Multimedia");
-		btnAudioProblem.addActionListener(new ActionListener() {
+		JButton btnMultimedia = new JButton("Multimedia");
+		btnMultimedia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Hardware.getInstance().setPrimaryUsage("multimedia");
 				GUIUtil.changePanel(panel, new JPNoSoundClipping());
 			}
 		});
-		btnAudioProblem.setBounds(120, 172, 200, 23);
-		panel.add(btnAudioProblem);
+		btnMultimedia.setBounds(120, 172, 200, 23);
+		panel.add(btnMultimedia);
 
 	}
 }

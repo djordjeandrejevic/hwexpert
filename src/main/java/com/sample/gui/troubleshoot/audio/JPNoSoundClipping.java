@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import com.sample.Hardware;
 import com.sample.Solution;
 import com.sample.gui.GUIUtil;
-import com.sample.gui.JPFinal;
+import com.sample.gui.JPFinalSolution;
 
 public class JPNoSoundClipping extends JPanel {
 
@@ -44,7 +44,7 @@ public class JPNoSoundClipping extends JPanel {
 		btnNo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Hardware.getInstance().setTypeOfSoundProblem("clipping sound");
-				GUIUtil.changePanel(panel, new JPFinal(Solution.createSolution()));
+				GUIUtil.changePanel(panel, new JPFinalSolution(Solution.createSolution()));
 			}
 		});
 		btnNo.setBounds(249, 162, 89, 23);

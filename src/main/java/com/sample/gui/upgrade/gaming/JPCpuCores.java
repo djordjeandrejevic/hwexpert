@@ -16,13 +16,13 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.JTextField;
 
-public class JPRamSize extends JPanel {
+public class JPCpuCores extends JPanel {
 	private JTextField textField;
 
 	/**
 	 * Create the panel.
 	 */
-	public JPRamSize() {
+	public JPCpuCores() {
 		setLayout(null);
 
 		final JPanel panel = new JPanel();
@@ -30,13 +30,12 @@ public class JPRamSize extends JPanel {
 		add(panel);
 		panel.setLayout(null);
 
-		JLabel lblNewLabel = new JLabel(
-				"How much RAM do you have? (in gigabytes - GB)");
-		lblNewLabel.setBounds(75, 104, 280, 14);
+		JLabel lblNewLabel = new JLabel("How many cores does your CPU have?");
+		lblNewLabel.setBounds(99, 86, 280, 14);
 		panel.add(lblNewLabel);
 
 		textField = new JTextField();
-		textField.setBounds(156, 148, 86, 20);
+		textField.setBounds(159, 136, 86, 20);
 		panel.add(textField);
 		textField.setColumns(10);
 
@@ -49,12 +48,12 @@ public class JPRamSize extends JPanel {
 					JOptionPane.showMessageDialog(null,
 							"You must enter a number!");
 				} else {
-					Hardware.getInstance().setRamSize(enteredNumber);
-					GUIUtil.changePanel(panel, new JPCpuCores());
+					Hardware.getInstance().setCpuCores(enteredNumber);
+					GUIUtil.changePanel(panel, new JPVramSize());
 				}
 			}
 		});
-		btnNext.setBounds(156, 206, 89, 23);
+		btnNext.setBounds(159, 195, 89, 23);
 		panel.add(btnNext);
 
 	}

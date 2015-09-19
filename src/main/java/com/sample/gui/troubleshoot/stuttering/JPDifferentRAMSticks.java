@@ -7,7 +7,7 @@ import javax.swing.JButton;
 import com.sample.Hardware;
 import com.sample.Solution;
 import com.sample.gui.GUIUtil;
-import com.sample.gui.JPFinal;
+import com.sample.gui.JPFinalSolution;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -33,7 +33,7 @@ public class JPDifferentRAMSticks extends JPanel {
 		btnYes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Hardware.getInstance().setTriedDifferentRam(true);
-				GUIUtil.changePanel(panel, new JPFinal(Solution.createSolution()));
+				GUIUtil.changePanel(panel, new JPFinalSolution(Solution.createSolution()));
 				
 			}
 		});
@@ -44,7 +44,7 @@ public class JPDifferentRAMSticks extends JPanel {
 		btnNo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Hardware.getInstance().setTriedDifferentRam(true);
-				GUIUtil.changePanel(panel, new JPFinal(Solution.createSolution()));
+				GUIUtil.changePanel(panel, new JPFinalSolution(Solution.createSolution()));
 			}
 		});
 		btnNo.setBounds(249, 162, 89, 23);

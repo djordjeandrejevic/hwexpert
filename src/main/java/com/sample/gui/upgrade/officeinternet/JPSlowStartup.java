@@ -1,4 +1,4 @@
-package com.sample.gui.troubleshoot.video;
+package com.sample.gui.upgrade.officeinternet;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,43 +8,41 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.sample.Hardware;
-import com.sample.Solution;
 import com.sample.gui.GUIUtil;
-import com.sample.gui.JPFinalSolution;
 
-public class JPCheckedCable extends JPanel {
+public class JPSlowStartup extends JPanel {
 
 	/**
 	 * Create the panel.
 	 */
-	public JPCheckedCable() {
+	public JPSlowStartup() {
 		setLayout(null);
-		
+
 		final JPanel panel = new JPanel();
 		panel.setBounds(10, 11, 430, 278);
 		add(panel);
 		panel.setLayout(null);
-		
-		JLabel lblNewLabel = new JLabel("Have you checked monitor cable?");
-		lblNewLabel.setBounds(120, 104, 218, 14);
+
+		JLabel lblNewLabel = new JLabel(
+				"Are you facing a slow system or program startup?");
+		lblNewLabel.setBounds(69, 105, 291, 14);
 		panel.add(lblNewLabel);
-		
+
 		JButton btnYes = new JButton("Yes");
 		btnYes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Hardware.getInstance().setCheckedVideoCable(true);
-				GUIUtil.changePanel(panel, new JPFinalSolution(Solution.createSolution()));
-				
+				Hardware.getInstance().setSlowStartup(true);
+				GUIUtil.changePanel(panel, new JPMultitasking());
 			}
 		});
 		btnYes.setBounds(96, 162, 89, 23);
 		panel.add(btnYes);
-		
+
 		JButton btnNo = new JButton("No");
 		btnNo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Hardware.getInstance().setCheckedVideoCable(false);
-				GUIUtil.changePanel(panel, new JPFinalSolution(Solution.createSolution()));
+				Hardware.getInstance().setSlowStartup(false);
+				GUIUtil.changePanel(panel, new JPMultitasking());
 			}
 		});
 		btnNo.setBounds(249, 162, 89, 23);

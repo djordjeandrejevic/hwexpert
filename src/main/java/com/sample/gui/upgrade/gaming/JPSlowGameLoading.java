@@ -7,7 +7,7 @@ import javax.swing.JButton;
 import com.sample.Hardware;
 import com.sample.Solution;
 import com.sample.gui.GUIUtil;
-import com.sample.gui.JPFinal;
+import com.sample.gui.JPFinalSolution;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -33,7 +33,7 @@ public class JPSlowGameLoading extends JPanel {
 		btnYes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Hardware.getInstance().setSlowLoading(true);
-				GUIUtil.changePanel(panel, new JPFinal(Solution.createSolution()));
+				GUIUtil.changePanel(panel, new JPRamSize());
 				
 			}
 		});
@@ -44,7 +44,7 @@ public class JPSlowGameLoading extends JPanel {
 		btnNo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Hardware.getInstance().setSlowLoading(false);
-				GUIUtil.changePanel(panel, new JPFinal(Solution.createSolution()));
+				GUIUtil.changePanel(panel, new JPRamSize());
 			}
 		});
 		btnNo.setBounds(249, 162, 89, 23);

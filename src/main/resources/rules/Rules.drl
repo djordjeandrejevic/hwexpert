@@ -113,7 +113,7 @@ lock-on-active true
     when
         h: Hardware(fixOrUpgrade  == "upgrade", primaryUsage == "office/internet", slowLoading == true)
     then
-        h.setSolution("Buy an SSD");
+    	h.getRecommendations().add("Buy an SSD");
         update(h);
 end
 
@@ -122,7 +122,7 @@ lock-on-active true
     when
         h: Hardware(fixOrUpgrade  == "upgrade", primaryUsage == "gaming", ramSize < 6)
     then
-        h.setSolution("Buy more RAM");
+    	h.getRecommendations().add("Buy more RAM");
         update(h);
 end
 
@@ -131,7 +131,7 @@ lock-on-active true
     when
         h: Hardware(fixOrUpgrade  == "upgrade", primaryUsage == "gaming", cpuCores  < 4)
     then
-        h.setSolution("Buy at least quad-core CPU");
+	    h.getRecommendations().add("Buy at least quad-core CPU");
         update(h);
 end
 
@@ -140,7 +140,7 @@ lock-on-active true
     when
         h: Hardware(fixOrUpgrade  == "upgrade", primaryUsage == "gaming", vramSize   < 2)
     then
-        h.setSolution("Buy at least 2GB VRAM GPU");
+		h.getRecommendations().add("Buy at least 2GB VRAM GPU");
         update(h);
 end
 
@@ -149,7 +149,7 @@ lock-on-active true
     when
         h: Hardware(fixOrUpgrade  == "upgrade", primaryUsage == "gaming", fpsGames == true)
     then
-        h.setSolution("Consider buying a high DPI mouse and 120Hz/1ms monitor");
+		h.getRecommendations().add("Consider buying a high DPI mouse and 120Hz/1ms monitor");
         update(h);
 end
 
@@ -158,7 +158,7 @@ lock-on-active true
     when
         h: Hardware(fixOrUpgrade  == "upgrade", primaryUsage == "office/internet", slowStartup == true)
     then
-        h.setSolution("Buy an SSD");
+    	h.getRecommendations().add("Buy an SSD");        
         update(h);
 end
 
@@ -167,16 +167,16 @@ lock-on-active true
     when
         h: Hardware(fixOrUpgrade  == "upgrade", primaryUsage == "office/internet", multitask == true)
     then
-        h.setSolution("Buy more RAM");
+        h.getRecommendations().add("Buy more RAM");
         update(h);
 end
 
 rule "CPU office/internet upgrade"
 lock-on-active true
     when
-        h: Hardware(fixOrUpgrade  == "upgrade", primaryUsage == "office/internet", cpuCores <= 4)
+        h: Hardware(fixOrUpgrade  == "upgrade", primaryUsage == "office/internet", cpuCores < 2)
     then
-        h.setSolution("Buy at least quad-core CPU");
+    	h.getRecommendations().add("Buy at least dual-core CPU");        
         update(h);
 end
 
