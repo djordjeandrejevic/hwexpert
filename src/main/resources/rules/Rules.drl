@@ -185,7 +185,7 @@ lock-on-active true
     when
         h: Hardware(fixOrUpgrade  == "upgrade", primaryUsage == "multimedia", htpcOrRegular == "regular", monitorSize < 24)
     then
-        h.setSolution("Consider buying a 24\" or bigger monitor");
+    	h.getRecommendations().add("Consider buying a 24\" or bigger monitor");
         update(h);
 end
 
@@ -194,7 +194,7 @@ lock-on-active true
     when
         h: Hardware(fixOrUpgrade  == "upgrade", primaryUsage == "multimedia", speakers in (2.0,2.1))
     then
-        h.setSolution("Consider buying a 5.1 system");
+    	h.getRecommendations().add("Consider buying a 5.1 system");         
         update(h);
 end
 
@@ -203,7 +203,7 @@ lock-on-active true
     when
         h: Hardware(fixOrUpgrade  == "upgrade", primaryUsage == "multimedia", dedicatedSoundCard == false)
     then
-        h.setSolution("Consider buying a dedicated sound card");
+    	h.getRecommendations().add("Consider buying a dedicated sound card");        
         update(h);
 end
 
@@ -212,6 +212,6 @@ lock-on-active true
     when
         h: Hardware(fixOrUpgrade  == "upgrade", primaryUsage == "multimedia", enoughStorage == false)
     then
-        h.setSolution("Buy a bigger HDD");
+    	h.getRecommendations().add("Buy a bigger HDD");        
         update(h);
 end

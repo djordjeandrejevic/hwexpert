@@ -14,6 +14,7 @@ import com.sample.gui.troubleshoot.shutdownrestart.JPNoisy;
 import com.sample.gui.troubleshoot.stuttering.JPDifferentRAMSticks;
 import com.sample.gui.troubleshoot.video.JPCheckedCable;
 import com.sample.gui.upgrade.gaming.JPSlowGameLoading;
+import com.sample.gui.upgrade.multimedia.JPHtpcRegularPc;
 import com.sample.gui.upgrade.officeinternet.JPSlowStartup;
 
 public class JPUpgrade extends JPanel {
@@ -57,7 +58,7 @@ public class JPUpgrade extends JPanel {
 		btnMultimedia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Hardware.getInstance().setPrimaryUsage("multimedia");
-				GUIUtil.changePanel(panel, new JPNoSoundClipping());
+				GUIUtil.changePanel(panel, new JPHtpcRegularPc());
 			}
 		});
 		btnMultimedia.setBounds(120, 172, 200, 23);

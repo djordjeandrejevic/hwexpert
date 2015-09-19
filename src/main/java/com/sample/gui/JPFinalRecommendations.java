@@ -41,7 +41,7 @@ public class JPFinalRecommendations extends JPanel {
 		JButton btnStartOver = new JButton("Start over");
 		btnStartOver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Hardware.getInstance().equals(null);
+				Hardware.getInstance().setToNull();
 				GUIUtil.changePanel(panel, new JPTroubleshootUpgrade());
 			}
 		});
