@@ -1,5 +1,8 @@
 package com.sample
- 
+import org.goodoldai.jeff.wizard.JEFFWizard;
+
+global JEFFWizard ef;
+
 rule "Dusty PC"
 lock-on-active true
     when
@@ -14,8 +17,9 @@ lock-on-active true
     when
         h: Hardware(fixOrUpgrade  == "fix", problemToFix == "shutdown/restart", noisy == true, cleaned == true)
     then
-        h.setSolution("Replace cooler");
-        update(h);
+        h.setSolution("Replace cooler");        
+        update(h);   
+        ef.addText(null, "Faulty coooler", "tt");
 end
 
 rule "Faulty PSU"

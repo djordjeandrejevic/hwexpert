@@ -48,7 +48,7 @@ public class JPFinalRecommendations extends JPanel {
 		btnStartOver.setBounds(141, 117, 154, 23);
 		panel.add(btnStartOver);
 
-//		if (!solution.startsWith("No solution")) {
+		if (!recommendations.get(0).startsWith("Sorry")) {
 			JButton btnCreatePdf = new JButton("Create PDF");
 			btnCreatePdf.setBounds(142, 186, 154, 23);
 			panel.add(btnCreatePdf);
@@ -56,6 +56,6 @@ public class JPFinalRecommendations extends JPanel {
 			JButton btnDetailedSolution = new JButton("Detailed solution");
 			btnDetailedSolution.setBounds(142, 220, 154, 23);
 			panel.add(btnDetailedSolution);
-//		}
+		}
 	}
 }

@@ -5,6 +5,7 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 
 import com.sample.Hardware;
+import com.sample.Solution;
 
 import java.awt.Font;
 import java.awt.event.ActionListener;
@@ -44,6 +45,11 @@ public class JPFinalSolution extends JPanel {
 
 		if (!solution.startsWith("No solution")) {
 			JButton btnCreatePdf = new JButton("Create PDF");
+			btnCreatePdf.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					Solution.savePDF();
+				}
+			});
 			btnCreatePdf.setBounds(142, 186, 154, 23);
 			panel.add(btnCreatePdf);
 
