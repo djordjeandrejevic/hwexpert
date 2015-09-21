@@ -19,7 +19,7 @@ lock-on-active true
     then
         h.setSolution("Replace cooler");        
         update(h);   
-        ef.addText(null, "Faulty coooler", "tt");
+        ef.addText(null, "Faulty coooler", null, null);
 end
 
 rule "Faulty PSU"

@@ -52,7 +52,12 @@ public class Solution {
 
 	private static void initializeJEFF(KieSession kSession) {
 		ef = new JEFFWizard();
-		ef.setInternationalization(false);
+//		ef.setInternationalization(false);
+		
+		ef.setInternationalization(true);
+		ef.setLanguage("en");
+		ef.setCountry("US");		
+		
 		ef.setTitle("HWExpert explanation");
 		ef.createExplanation();
 		kSession.setGlobal("ef", ef);
