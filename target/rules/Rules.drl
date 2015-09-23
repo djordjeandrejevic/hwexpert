@@ -10,6 +10,7 @@ lock-on-active true
     then
     	h.setSolution("Clean your PC");    	   
 		update( h);
+		ef.addText(null, "dustypc", null, null);
 end
 
 rule "Faulty cooler"
@@ -29,6 +30,7 @@ lock-on-active true
     then
         h.setSolution("Replace PSU");
         update(h);
+        ef.addText(null, "faultypsu", null, null);
 end
 
 rule "Faulty dedicated sound card"
@@ -38,6 +40,7 @@ lock-on-active true
     then
         h.setSolution("Replace sound card");
         update(h);
+        ef.addText(null, "faultydedicatedsoundcard", null, null);
 end
 
 rule "Faulty onboard sound card"
@@ -45,8 +48,9 @@ lock-on-active true
     when
         h: Hardware(fixOrUpgrade  == "fix", problemToFix == "audio", typeOfSoundProblem == "no sound", dedicatedSoundCard == false)
     then
-        h.setSolution("Replace motherboard");
+        h.setSolution("Replace motherboard");        
         update(h);
+        ef.addText(null, "faultyonboardsoundcard", null, null);
 end
 
 rule "Faulty speakers cable"
@@ -54,8 +58,9 @@ lock-on-active true
     when
         h: Hardware(fixOrUpgrade  == "fix", problemToFix == "audio", typeOfSoundProblem == "clipping sound")
     then
-        h.setSolution("Check your speakers cable");
+        h.setSolution("Check your speakers cable");        
         update(h);
+        ef.addText(null, "faultyspeakerscable", null, null);
 end
 
 rule "Faulty VGA/DVI/DP monitor cable"
@@ -63,8 +68,9 @@ lock-on-active true
     when
         h: Hardware(fixOrUpgrade  == "fix", problemToFix == "video", checkedVideoCable == false)
     then
-        h.setSolution("Check monitor (DVI/VGA/DP) cable");
+        h.setSolution("Check monitor (DVI/VGA/DP) cable");        
         update(h);
+        ef.addText(null, "faultymonitorcable", null, null);
 end
 
 rule "Faulty graphic card"
@@ -74,6 +80,7 @@ lock-on-active true
     then
         h.setSolution("Replace graphic card");
         update(h);
+        ef.addText(null, "faultygraphiccard", null, null);
 end
 
 rule "Faulty RAM"
@@ -83,6 +90,7 @@ lock-on-active true
     then
         h.setSolution("Try different RAM sticks or change the slots of current ones");
         update(h);
+        ef.addText(null, "faultyram", null, null);
 end
 
 rule "Faulty hard disk drive"
@@ -92,6 +100,7 @@ lock-on-active true
     then
         h.setSolution("Check or replace your hard disk drive");
         update(h);
+        ef.addText(null, "faultyhdd", null, null);
 end
 
 rule "Dead PSU"
@@ -101,6 +110,7 @@ lock-on-active true
     then
         h.setSolution("Replace PSU");
         update(h);
+        ef.addText(null, "deadpsu", null, null);
 end
 
 rule "Beeping problem"
@@ -110,6 +120,7 @@ lock-on-active true
     then
         h.setSolution("Find beep codes for your motherboard and examine the problem");
         update(h);
+        ef.addText(null, "beepingproblem", null, null);
 end
 
 rule "Slow loading"
@@ -119,6 +130,7 @@ lock-on-active true
     then
     	h.getRecommendations().add("Buy an SSD");
         update(h);
+        ef.addText(null, "slowloading", null, null);
 end
 
 rule "RAM gaming upgrade"
@@ -128,6 +140,7 @@ lock-on-active true
     then
     	h.getRecommendations().add("Buy more RAM");
         update(h);
+        ef.addText(null, "ramgamingupgrade", null, null);
 end
 
 rule "CPU gaming upgrade"
@@ -137,6 +150,7 @@ lock-on-active true
     then
 	    h.getRecommendations().add("Buy at least quad-core CPU");
         update(h);
+        ef.addText(null, "cpugamingupgrade", null, null);
 end
 
 rule "GPU gaming upgrade"
@@ -146,6 +160,7 @@ lock-on-active true
     then
 		h.getRecommendations().add("Buy at least 2GB VRAM GPU");
         update(h);
+        ef.addText(null, "gpugamingupgrade", null, null);
 end
 
 rule "FPS gaming"
@@ -155,15 +170,17 @@ lock-on-active true
     then
 		h.getRecommendations().add("Consider buying a high DPI mouse and 120Hz/1ms monitor");
         update(h);
+        ef.addText(null, "fpsgaming", null, null);
 end
 
 rule "Slow startup"
 lock-on-active true
     when
-        h: Hardware(fixOrUpgrade  == "upgrade", primaryUsage == "office/internet", slowStartup == true)
+        h: Hardware(fixOrUpgrade  == "upgrade", primaryUsage == "gaming", slowStartup == true)
     then
     	h.getRecommendations().add("Buy an SSD");        
         update(h);
+        ef.addText(null, "slowstartup", null, null);
 end
 
 rule "Multitasking problems"
@@ -173,6 +190,7 @@ lock-on-active true
     then
         h.getRecommendations().add("Buy more RAM");
         update(h);
+        ef.addText(null, "multitaskingproblems", null, null);
 end
 
 rule "CPU office/internet upgrade"
@@ -182,6 +200,7 @@ lock-on-active true
     then
     	h.getRecommendations().add("Buy at least dual-core CPU");        
         update(h);
+        ef.addText(null, "cpuofficeinternetupgrade", null, null);
 end
 
 rule "Monitor upgrade"
@@ -191,6 +210,7 @@ lock-on-active true
     then
     	h.getRecommendations().add("Consider buying a 24\" or bigger monitor");
         update(h);
+        ef.addText(null, "monitorupgrade", null, null);
 end
 
 rule "Speakers upgrade"
@@ -200,6 +220,7 @@ lock-on-active true
     then
     	h.getRecommendations().add("Consider buying a 5.1 system");         
         update(h);
+        ef.addText(null, "speakersupgrade", null, null);
 end
 
 rule "Sound card upgrade"
@@ -209,6 +230,7 @@ lock-on-active true
     then
     	h.getRecommendations().add("Consider buying a dedicated sound card");        
         update(h);
+        ef.addText(null, "soundcardupgrade", null, null);
 end
 
 rule "Hard disk drive upgrade"
@@ -218,4 +240,5 @@ lock-on-active true
     then
     	h.getRecommendations().add("Buy a bigger HDD");        
         update(h);
+        ef.addText(null, "harddiskdriveupgrade", null, null);
 end

@@ -55,7 +55,7 @@ public class JPFinalSolution extends JPanel {
 					jd.setVisible(true);
 				}
 			});
-			btnDetailedSolution.setBounds(142, 220, 154, 23);
+			btnDetailedSolution.setBounds(130, 220, 179, 23);
 			panel.add(btnDetailedSolution);
 //		}
 	}
