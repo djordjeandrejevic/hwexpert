@@ -1,5 +1,6 @@
 package com.sample.gui;
 
+import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -7,6 +8,7 @@ import javax.swing.JButton;
 import com.sample.Hardware;
 import com.sample.Solution;
 
+import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -43,19 +45,18 @@ public class JPFinalSolution extends JPanel {
 		btnStartOver.setBounds(141, 117, 154, 23);
 		panel.add(btnStartOver);
 
-		if (!solution.startsWith("No solution")) {
-			JButton btnCreatePdf = new JButton("Create PDF");
-			btnCreatePdf.addActionListener(new ActionListener() {
+			JButton btnDetailedSolution = new JButton("Create detailed solution");
+			btnDetailedSolution.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					Solution.savePDF();
+					JDSavePDF jd = new JDSavePDF();
+					jd.setLocationRelativeTo(null);
+					jd.setModal(true);
+					jd.setVisible(true);
 				}
 			});
-			btnCreatePdf.setBounds(142, 186, 154, 23);
-			panel.add(btnCreatePdf);
-
-			JButton btnDetailedSolution = new JButton("Detailed solution");
 			btnDetailedSolution.setBounds(142, 220, 154, 23);
 			panel.add(btnDetailedSolution);
-		}
+//		}
 	}
 }

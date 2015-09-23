@@ -6,10 +6,13 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import com.sample.Hardware;
+import com.sample.Solution;
 
 public class JPFinalRecommendations extends JPanel {
 
@@ -48,14 +51,18 @@ public class JPFinalRecommendations extends JPanel {
 		btnStartOver.setBounds(141, 117, 154, 23);
 		panel.add(btnStartOver);
 
-		if (!recommendations.get(0).startsWith("Sorry")) {
-			JButton btnCreatePdf = new JButton("Create PDF");
-			btnCreatePdf.setBounds(142, 186, 154, 23);
-			panel.add(btnCreatePdf);
-
-			JButton btnDetailedSolution = new JButton("Detailed solution");
-			btnDetailedSolution.setBounds(142, 220, 154, 23);
-			panel.add(btnDetailedSolution);
-		}
+			JButton btnDetailedRecommendations = new JButton("Create detailed recommendation");
+			btnDetailedRecommendations.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					Solution.savePDF();
+					JDSavePDF jd = new JDSavePDF();
+					jd.setLocationRelativeTo(null);
+					jd.setModal(true);
+					jd.setVisible(true);
+				}
+			});
+			btnDetailedRecommendations.setBounds(124, 222, 210, 23);
+			panel.add(btnDetailedRecommendations);
+//		}
 	}
 }
